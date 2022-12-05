@@ -21,5 +21,11 @@
     <%= f.file_field :thumbnail, class: 'form-control js-file-select-preview mb-3', accept: 'image/*', data: { target: '#preview-target' } %>
     <%= image_tag f.object.decorate.thumbnail, id: 'preview-target', class: 'w-100 border' %>
   </div>
+  <div class="mb-3">
+  <% if current_user.gender_before_type_cast == 2 %>
+    <%= f.label :only_woman %>
+    <%= f.check_box :only_woman, {}, checked_value='woman_only_event', unchecked_value='some_event' %>
+  <% end %>
+  </div>
   <%= f.submit '登録', class: 'btn btn-primary' %>
 <% end %>

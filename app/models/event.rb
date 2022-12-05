@@ -20,6 +20,8 @@ class Event < ApplicationRecord
     validates :held_at
   end
 
+  enum only_woman: { some_event:0, woman_only_event:1 }
+
   def past?
     held_at < Time.current
   end
@@ -27,4 +29,5 @@ class Event < ApplicationRecord
   def future?
     !past?
   end
+
 end
