@@ -86,23 +86,23 @@
           <div class="text-center">
             <% if logged_in? %>
               <% if current_user.not_owner?(@event) %>
-              <% if @event.some_event? %>
-                <% if current_user.attend?(@event) %>
-                  <%= link_to 'キャンセルする',
-                              event_attendance_url(@event),
-                              class: 'btn btn-primary',
-                              method: :delete,
-                              data: { confirm: 'キャンセルします' }
-                  %>
-                <% else %>
-                  <%= link_to 'このもくもく会に参加する',
-                              event_attendance_url(@event),
-                              class: 'btn btn-primary',
-                              method: :post,
-                              data: { confirm: '申し込みます' }
-                  %>
+                <% if @event.some_event? %>
+                  <% if current_user.attend?(@event) %>
+                    <%= link_to 'キャンセルする',
+                                event_attendance_url(@event),
+                                class: 'btn btn-primary',
+                                method: :delete,
+                                data: { confirm: 'キャンセルします' }
+                    %>
+                  <% else %>
+                    <%= link_to 'このもくもく会に参加する',
+                                event_attendance_url(@event),
+                                class: 'btn btn-primary',
+                                method: :post,
+                                data: { confirm: '申し込みます' }
+                    %>
+                  <% end %>
                 <% end %>
-              <% end %>
               <% end %>
             <% end %>
           </div>
