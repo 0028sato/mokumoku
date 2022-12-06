@@ -62,7 +62,7 @@
           </div>
           <div class="p-3 bg-light">
             イベント数
-            <%= @event.user.events.size %>
+            <%= @event.user.events&.size %>
             回
           </div>
         </div>
@@ -85,7 +85,7 @@
           <hr />
           <div class="text-center">
             <% if logged_in? %>
-              <% if !current_user.owner?(@event) %>
+              <% if current_user.not_owner?(@event) %>
                 <% if current_user.attend?(@event) %>
                   <%= link_to 'キャンセルする',
                               event_attendance_url(@event),

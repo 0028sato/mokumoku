@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :gender, presence: true
 
-  enum gender: { other:0, man:1, woman:2 }
+  enum gender: { other: 0, man: 1, woman: 2 }
 
   scope :allowing_created_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.created_event) }
@@ -32,8 +32,8 @@ class User < ApplicationRecord
   scope :allowing_liked_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.liked_event) }
 
-  def owner?(event)
-    event.user_id == id
+  def not_owner?(event)
+    event.user_id != id
   end
 
   def attend(event)
