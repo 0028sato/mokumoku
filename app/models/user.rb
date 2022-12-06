@@ -32,6 +32,10 @@ class User < ApplicationRecord
   scope :allowing_liked_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.liked_event) }
 
+  def gender_woman?(event)
+    gender_before_type_cast == 2
+  end
+
   def not_owner?(event)
     event.user_id != id
   end
