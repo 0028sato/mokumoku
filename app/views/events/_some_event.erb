@@ -86,7 +86,7 @@
           <div class="text-center">
             <% if logged_in? %>
               <% if current_user.not_owner?(@event) %>
-              <% if @event.only_woman == "some_event" %> 
+              <% if @event.some_event? %>
                 <% if current_user.attend?(@event) %>
                   <%= link_to 'キャンセルする',
                               event_attendance_url(@event),
